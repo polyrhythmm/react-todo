@@ -93,7 +93,7 @@ describe('TodoAPI', () => {
         });
 
         it('should filter todos by searchText', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, true, 'Some');
+          var filterTodos = TodoAPI.filterTodos(todos, true, 'some');
 
           expect(filterTodos.length).toBe(2);
         });
