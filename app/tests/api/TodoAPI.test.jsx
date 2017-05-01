@@ -1,15 +1,15 @@
 var expect = require('expect');
 
-var TodoAPI = require('TodoAPI');
+var ToDoAPI = require('ToDoAPI');
 
-describe('TodoAPI', () => {
+describe('ToDoAPI', () => {
 
     beforeEach(() => {
         localStorage.removeItem('todos');
     });
 
     it('should exist', () => {
-      expect(TodoAPI).toExist();
+      expect(ToDoAPI).toExist();
     });
 
       describe('setTodos', () => {
@@ -20,7 +20,7 @@ describe('TodoAPI', () => {
             completed: false
           }];
 
-          TodoAPI.setTodos(todos);
+          ToDoAPI.setTodos(todos);
 
           var actualTodos = JSON.parse(localStorage.getItem('todos'));
 
@@ -32,7 +32,7 @@ describe('TodoAPI', () => {
             a: 'b'
           }
 
-          TodoAPI.setTodos(badTodos);
+          ToDoAPI.setTodos(badTodos);
 
           expect(localStorage.getItem('todos')).toBe(null);
         });
@@ -40,7 +40,7 @@ describe('TodoAPI', () => {
 
       describe('getTodos', () => {
         it('should return empty array for bad local storage data', () => {
-          var actualTodos = TodoAPI.getTodos();
+          var actualTodos = ToDoAPI.getTodos();
           expect(actualTodos).toEqual([]);
         });
 
@@ -53,7 +53,7 @@ describe('TodoAPI', () => {
 
           localStorage.setItem('todos', JSON.stringify(todos));
 
-          var actualTodos = TodoAPI.getTodos();
+          var actualTodos = ToDoAPI.getTodos();
 
         expect(actualTodos).toEqual(todos);
         });
@@ -75,31 +75,31 @@ describe('TodoAPI', () => {
         }];
 
         it('should return all items if showCompleted is true', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, true, '');
+          var filterTodos = ToDoAPI.filterTodos(todos, true, '');
 
           expect(filterTodos.length).toBe(3);
         });
 
         it('should return items is showCompleted is false', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, false, '');
+          var filterTodos = ToDoAPI.filterTodos(todos, false, '');
 
           expect(filterTodos.length).toBe(1);
         });
 
         it('should sort by completed status', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, true, '');
+          var filterTodos = ToDoAPI.filterTodos(todos, true, '');
 
           expect(filterTodos[0].completed).toBe(false);
         });
 
         it('should filter todos by searchText', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, true, 'some');
+          var filterTodos = ToDoAPI.filterTodos(todos, true, 'some');
 
           expect(filterTodos.length).toBe(2);
         });
 
         it('should return all todos if searchText is empty', () => {
-          var filterTodos = TodoAPI.filterTodos(todos, true, '');
+          var filterTodos = ToDoAPI.filterTodos(todos, true, '');
 
           expect(filterTodos.length).toBe(3);
         })

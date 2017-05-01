@@ -3,9 +3,8 @@ var uuid = require('node-uuid');
 
 import ToDoList from 'ToDoList';
 import AddToDo from 'AddToDo';
-
-var ToDoSearch = require('ToDoSearch');
-var TodoAPI = require('TodoAPI');
+import ToDoSearch from 'ToDoSearch';
+var ToDoAPI = require('ToDoAPI');
 var moment = require('moment');
 
 var ToDoApp = React.createClass({
@@ -13,11 +12,11 @@ var ToDoApp = React.createClass({
     return {
       showCompleted: false,
       searchText: '',
-      todos: TodoAPI.getTodos()
+      todos: ToDoAPI.getTodos()
     };
   },
   componentDidUpdate: function() {
-    TodoAPI.setTodos(this.state.todos);
+    ToDoAPI.setTodos(this.state.todos);
   },
   handleSearch: function(showCompleted, searchText) {
     this.setState({
@@ -42,7 +41,7 @@ var ToDoApp = React.createClass({
   },
   render: function() {
     var {todos, showCompleted, searchText} = this.state;
-    var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+    var filterTodos = ToDoAPI.filterTodos(todos, showCompleted, searchText);
 
     return (
       <div>

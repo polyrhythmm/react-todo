@@ -14,9 +14,6 @@ var store = require('configureStore').configure();
    console.log('New state', store.getState());
  })
 
-store.dispatch(actions.addToDo("Clean the yard"));
-store.dispatch(actions.setSearchText("yard"));
-store.dispatch(actions.toggleShowCompleted());
 //Load foundation-min
 require('style!css!foundation-sites/dist/foundation.min.css');
 

@@ -30,6 +30,7 @@ module.exports = {
   filterTodos: function(todos, showCompleted, searchText) {
     var filterTodos = todos;
 
+    console.log('filter todos', filterTodos);
     //Filter by showCompleted
     filterTodos = filterTodos.filter((todo) => {
       return !todo.completed || showCompleted;
