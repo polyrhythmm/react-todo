@@ -9,7 +9,8 @@ var ToDoApp = require('ToDoApp');
 
 var actions = require('actions');
 var store = require('configureStore').configure();
-var ToDoAPI = require('ToDoAPI')
+var ToDoAPI = require('ToDoAPI');
+
  store.subscribe(() => {
    console.log('New state', store.getState());
    var state = store.getState();

@@ -7,15 +7,15 @@ export var AddToDo = React.createClass({
     e.preventDefault();
     var {dispatch} = this.props;
 
-    var text = this.refs.text.value;
+    var todoText = this.refs.todoText.value;
 
-    if(text.length > 0)
+    if(todoText.length > 0)
     {
-
-        dispatch(actions.addToDo(text));
-        this.refs.text.value = '';
+        console.log(todoText, " todoText");
+        dispatch(actions.startAddTodo(todoText));
+        this.refs.todoText.value = '';
     } else {
-      this.refs.text.focus();
+      this.refs.todoText.focus();
     }
 
   },
@@ -23,7 +23,7 @@ export var AddToDo = React.createClass({
     return (
       <div className="container__footer">
         <form onSubmit={this.onSubmit}>
-          <input type="text" ref="text" placeholder="Enter to do label"/>
+          <input type="text" ref="todoText" placeholder="Enter to do label"/>
           <button className="button expanded">Add</button>
         </form>
       </div>
