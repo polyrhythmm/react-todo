@@ -15,6 +15,40 @@ export var addToDo = (todo) => {
   }
 }
 
+export var startAddTodos = () => {
+  return (dispatch, getState) => {
+  return firebaseRef.once('value').then((snapshot) => {
+      var obj = snapshot.val() || {};
+      var array = Object.keys(obj.todos)
+      var objectArray = [];
+
+      for(var i = 0; i < array.length; i++)
+      {
+        var object = {
+          id: array[i],
+          completed: obj.todos[array[i]].completed,
+          completedAt: obj.todos[array[i]].completedAt,
+          text: obj.todos[array[i]].text,
+          createdAt: obj.todos[array[i]].createdAt
+        }
+
+        if(object.completedAt === undefined)
+        {
+          object.completedAt = null;
+        }
+
+        objectArray.push(object);
+
+      }
+
+      dispatch(addTodos(objectArray));
+      console.log(objectArray)
+
+
+    })
+  }
+}
+
 export var startAddTodo = (text) => {
 
   return (dispatch, getState) => {

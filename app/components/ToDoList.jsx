@@ -8,7 +8,18 @@ export var ToDoList = React.createClass({
 
     var {todos, showCompleted, searchText} = this.props;
     var renderTodos = () => {
-      if(todos.length === 0)
+
+      var todosCompleted = 0;
+
+      todos.forEach((todo) => {
+        if(todo.completed)
+        {
+          todosCompleted++;
+        }
+      })
+
+
+      if(todos.length === 0 || todosCompleted === todos.length && !showCompleted)
       {
         return (
           <p className="container__message">Nothing to do</p>
