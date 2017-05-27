@@ -2,12 +2,11 @@ import firebase from 'firebase';
 
 try {
     var config = {
-      apiKey: "AIzaSyDYqhuCLlBVv7BiSI-uKedFu0_hs9Y9HBk",
-      authDomain: "polyrhythmm-todo-app.firebaseapp.com",
-      databaseURL: "https://polyrhythmm-todo-app.firebaseio.com",
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      databaseURL: process.env.DATABASE_URL,
       projectId: "polyrhythmm-todo-app",
-      storageBucket: "polyrhythmm-todo-app.appspot.com",
-      messagingSenderId: "1054090204371"
+      storageBucket: process.env.STORAGE_BUCKET, 
     };
     firebase.initializeApp(config);
 } catch(e) {
