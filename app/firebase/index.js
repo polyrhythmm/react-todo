@@ -6,11 +6,13 @@ try {
       authDomain: process.env.AUTH_DOMAIN,
       databaseURL: process.env.DATABASE_URL,
       projectId: "polyrhythmm-todo-app",
-      storageBucket: process.env.STORAGE_BUCKET, 
+      storageBucket: process.env.STORAGE_BUCKET,
     };
     firebase.initializeApp(config);
 } catch(e) {
 
 }
+
+export var githubProvider = new firebase.auth.GithubAuthProvider();
 export var firebaseRef = firebase.database().ref();
 export default firebase;

@@ -4,8 +4,8 @@ var expect = require('expect');
 var $ = require('jquery');
 var TestUtils = require('react-addons-test-utils');
 var {Provider} = require('react-redux')
-var ToDoApp = require('ToDoApp');
 
+import {ToDoApp} from 'ToDoApp';
 var configureStore = require('configureStore');
 
 import ToDoList from 'ToDoList'
