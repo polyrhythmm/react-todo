@@ -10,7 +10,7 @@ var configureStore = require('configureStore');
 
 import ToDoList from 'ToDoList'
 
-var ToDoApp = require('ToDoApp');
+//var ToDoApp = require('ToDoApp');
 
 describe("ToDoApp", () => {
   it('should exist', () => {

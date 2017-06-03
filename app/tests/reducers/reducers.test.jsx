@@ -5,6 +5,33 @@ var moment = require('moment');
 var todo = require('ToDo');
 
 describe('Reducers', () => {
+  describe('Authentication', () => {
+    it('should set user id', () => {
+
+      var action = {
+        type: "LOGIN",
+        uid: 123
+      }
+
+      var result = reducers.authReducer(undefined, df(action));
+
+      expect(result).toEqual({uid: action.uid});
+    })
+  })
+
+  it('should wipe auth on LOGOUT', () => {
+    const authData = {
+      uid: 123
+    }
+
+    const action = {
+      type: "LOGOUT"
+    }
+
+    var result = reducers.authReducer(df(authData), df(action));
+
+    expect(result).toEqual({})
+  })
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
       var action = {
