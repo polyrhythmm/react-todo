@@ -12,6 +12,8 @@ var store = require('configureStore').configure();
 firebase.auth().onAuthStateChanged((user) => {
   if(user){
     store.dispatch(actions.login(user.uid))
+    store.dispatch(actions.startAddTodos());
+    console.log("onAuthStateChanged")
     hashHistory.push('/todos');
   } else {
     store.dispatch(actions.logout());
@@ -23,7 +25,7 @@ store.subscribe(() => {
   console.log(store.getState())
 })
 
-//store.dispatch(actions.startAddTodos())
+
 
 //Load foundation-min
 require('style!css!foundation-sites/dist/foundation.min.css');
